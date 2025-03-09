@@ -1,0 +1,184 @@
+//navigation
+const hamburger = document.querySelector('.hamburger')
+const navList = document.querySelector('.nav-list')
+hamburger.addEventListener('click', () => {
+    navList.classList.toggle("open");
+})
+const modalContainer = document.querySelector(".modal-container"),
+    modalLogin = document.getElementById("login-show"),
+    Create = document.getElementById("Create"),
+    forgetPass = document.getElementById("forgetPasswordLink"),
+    loginhere = document.getElementById("loginhere"),
+    loginForm = document.querySelector(".login"),
+    forgetform = document.querySelector(".forget1"),
+    registrationForm = document.querySelector(".registration");
+// modalLogin.onclick = () => {
+//     modalContainer.classList.add("open")
+// }
+
+function closeModalContainer() {
+    modalContainer.classList.remove("open");
+}
+Create.onclick = () => {
+    loginForm.setAttribute("style", "transform:translate(-500px);");
+    registrationForm.setAttribute("style", "transform:translate(0);");
+}
+forgetPass.onclick = () => {
+    loginForm.setAttribute("style", "transform:translate(-500px);");
+    forgetform.setAttribute("style", "transform:translate(0);");
+}
+loginhere.onclick = () => {
+    registrationForm.removeAttribute("style");
+    loginForm.removeAttribute("style");
+}
+// Close alert when the close button is clicked
+document.querySelectorAll('.alert .btn-close').forEach(button => {
+    button.addEventListener('click', function () {
+        this.closest('.alert').style.display = 'none';
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const togglePassword = document.getElementById("togglepass");
+    const passwordField = document.getElementById("password");
+
+    togglePassword.addEventListener("click", function () {
+        // Toggle the type of the password input field between 'password' and 'text'
+        const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+        passwordField.setAttribute("type", type);
+
+        // Toggle the eye icon between 'fa-eye' and 'fa-eye-slash'
+        this.classList.toggle("fa-eye");
+        this.classList.toggle("fa-eye-slash");
+    });
+});
+// DISCOUNT MEDIA
+const video = document.querySelector('.video');
+const button = document.querySelector('.video-control');
+button.addEventListener("click", playpausevideo);
+function playpausevideo() {
+    if (video.paused) {
+        button.innerHTML = "  <i class='bx bx-pause'></i>"
+        video.play();
+    } else {
+        button.innerHTML = "  <i class='bx bx-play'></i>"
+        video.pause();
+    }
+}
+
+// PRELOADER
+// const loader = document.querySelector(".loader");
+// window.addEventListener("load", () => {
+//     setTimeout(() => {
+//         loader.style.display = "none";
+//     }, 500);
+// });
+// PRELOADER - Ensure loader hides after load
+const loader = document.querySelector(".loader");
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        loader.style.display = "none";
+    }, 500);
+});
+
+// Handle modal login and loader
+modalLogin.onclick = () => {
+    modalContainer.classList.add("open");
+
+    // Ensure loader is hidden when modal is triggered
+    if (loader) {
+        loader.style.display = "none";
+    }
+};
+
+// Optional - Hide loader if modal closes
+function closeModalContainer() {
+    modalContainer.classList.remove("open");
+    if (loader) {
+        loader.style.display = "none";
+    }
+}
+
+//fix nav
+const navigation = document.querySelector(".navigation");
+const header = document.querySelector(".header");
+window.addEventListener('scroll', () => {
+    const scrollHeight = window.pageYOffset;
+    if (scrollHeight > 200) {
+        navigation.classList.add("fix");
+        header.style.zIndex = "1000";
+    }
+    else {
+        navigation.classList.remove("fix");
+    }
+})
+//scroll
+// Scroll
+const links = document.querySelectorAll(".nav-link");
+
+Array.from(links).map((link) => {
+    link.addEventListener("click", (e) => {
+        // Prevent Default
+        e.preventDefault();
+
+        const id = e.currentTarget.getAttribute("href").slice(1);
+        const element = document.getElementById(id);
+        const navHeight = navigation.getBoundingClientRect().height;
+        const fix = navigation.classList.contains("fix");
+        let position = element.offsetTop - navHeight;
+
+        // if (!fix) {
+        //   position = position - navHeight;
+        // }
+
+        window.scrollTo({
+            left: 0,
+            top: position,
+        });
+        navList.classList.remove("open");
+    });
+});
+
+// Scroll Reveal
+
+const scroll = ScrollReveal({
+    distance: "100px",
+    duration: 2500,
+    reset: true,
+});
+
+scroll.reveal(`.content h1, .content .btn`, {
+    origin: "top",
+    interval: 100,
+});
+scroll.reveal(`.info .container h2, .info .container h3`, {
+    origin: "top",
+    interval: 150,
+});
+scroll.reveal(`.info .container p`, {
+    origin: "bottom ",
+    interval: 150,
+});
+scroll.reveal(`.about .col h1, .about .col p, .about .col .btn`, {
+    origin: "left",
+    interval: 150,
+});
+
+scroll.reveal(
+    `.about .col:last-child,.contact .location,.more .col:last-child,.newsletter .form`,
+    {
+        origin: "right",
+    }
+);
+
+scroll.reveal(`.service img,.contact .title`, {
+    origin: "top",
+});
+
+scroll.reveal(`.service .col,.trip .row`, {
+    origin: "bottom",
+});
+
+scroll.reveal(`.trip .title,.more .col:first-child,.newsletter .col`, {
+    origin: "left",
+});

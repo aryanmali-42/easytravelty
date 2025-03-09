@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-xl navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
+        <h1> <a class="me-5 fw-bold fs-3 h-font mt-3" href="index.php">EaSyTrAvEl</a></h1>
+        <button class="navbar-toggler shadow-none" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link me-2" routerLink="/home">Home </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link me-2" href="">Facilities </a>
+                </li>
+
+                <li class="nav-item ">
+                    <a class="nav-link me-2" href="">About </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link me-2" href=""> Packages</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link me-2" href="">Contact Us </a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                <button type="button" class="btn btn-outline-dark shadow-none me-lg-3 me-2" data-bs-toggle="modal"
+                    data-bs-target="#loginModal">
+                    Login
+                </button> <button type="button" class="btn btn-outline-dark shadow-none " data-bs-toggle="modal"
+                    data-bs-target="#registerModal">
+                    Register
+                </button>
+            </div>
+        </div>
+    </nav>
